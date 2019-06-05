@@ -8,7 +8,8 @@ ARG build_date
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 WORKDIR /go/src/multi-stage-docker
-COPY cmd/main.go ./cmd/main.go
+COPY cmd/* ./cmd/
+RUN go test ./...
 RUN go build -ldflags "-s -w -X 'main.version=$version' -X 'main.revision=$revision' -X 'main.buildDate=$build_date'" \
              -a \
              -installsuffix cgo \

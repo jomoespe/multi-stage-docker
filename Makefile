@@ -13,6 +13,7 @@ build:
 					--build-arg version=$(version) \
 	                --build-arg revision=$(revision) \
 					--build-arg build_date="$(date)" \
+					--rm \
 					--force-rm \
 					--quiet \
 					--tag $(repo)/$(image):$(tag) .

@@ -11,6 +11,3 @@ build:
 					--build-arg build_date=$(date) \
 					--tag $(repo)/$(image):$(tag) .
 	@ docker tag $(repo)/$(image):$(tag) $(repo)/$(image):latest
-
-run:
-	@ go run cmd/main.go

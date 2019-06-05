@@ -9,5 +9,6 @@ build:
 	@  docker build --build-arg version=$(version) \
 	                --build-arg revision=$(revision) \
 					--build-arg build_date=$(date) \
+					--force-rm \
 					--tag $(repo)/$(image):$(tag) .
 	@ docker tag $(repo)/$(image):$(tag) $(repo)/$(image):latest

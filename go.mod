@@ -1,3 +1,3 @@
 module github.com/jomoespe/multi-stage-docker
 
-go 1.11
+go 1.12

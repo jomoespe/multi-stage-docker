@@ -1,5 +1,5 @@
 repo     := jomoespe
-image    := sample
+image    := multi-stage-docker
 version  := $(shell cat VERSION)
 revision := $(shell git rev-parse --short HEAD)
 date     := "$(shell date --rfc-3339=seconds)"

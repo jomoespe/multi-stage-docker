@@ -6,12 +6,19 @@ package main
 
 import "fmt"
 
+const msg = 
+`multi-stage-docker build sample
+    version:    %s
+    revision:   %s
+    build date: %s
+`
+
 var (
-	version   = "development"
+	version   = "local-development"
 	revision  = ""
 	buildDate = ""
 )
 
 func main() {
-	fmt.Printf("multi-stage-docker sample %s %s (%s)\n", version, revision, buildDate)
+	fmt.Printf(msg, version, revision, buildDate)
 }

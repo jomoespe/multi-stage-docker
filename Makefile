@@ -9,7 +9,7 @@ repo     := jomoespe
 image    := multi-stage-docker
 version  := $(shell cat VERSION)
 revision := $(shell git rev-parse --short HEAD)
-date     := $(shell date --rfc-3339=seconds)
+date     := $(shell date --rfc-3339=seconds 2> /dev/null || date "+%Y-%m-%dT%H:%M:%SZ")
 tag      := $(version)$(revision:%$(revision)=-%$(revision)) # tag=version[-revision] (if revision exist)
 
 .PHONY   : build

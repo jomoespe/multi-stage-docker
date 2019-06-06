@@ -12,6 +12,9 @@ revision := $(shell git rev-parse --short HEAD)
 date     := $(shell date --rfc-3339=seconds)
 tag      := $(version)$(revision:%$(revision)=-%$(revision)) # tag=version[-revision] (if revision exist)
 
+.PHONY   : build
+.DEFAULT : build
+
 build: 
 	@  docker build --label "maintainer=José Moreno <jomoespe@gmail.com>" \
 					--label "version=$(version)" \

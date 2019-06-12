@@ -13,13 +13,13 @@ go_version       := $(shell go version | cut -d " " -f3)
 git_version      := $(shell git version | cut -d " " -f3)
 git_commit       := $(shell git rev-parse HEAD)
 git_commit_short := $(shell git rev-parse --short HEAD)
-tag              := $(version)$(git_commit_short:%$(git_commit_short)=-%$(git_commit_short)) # tag=version[-git_commit_short] (if git_commit_short exist)
+docker_tag       := $(version)$(git_commit_short:%$(git_commit_short)=-%$(git_commit_short)) # docker_tag=version[-git_commit_short] (if git_commit_short exist)
 
 .PHONY   : build
 .DEFAULT : build
 
 build:
-	@ docker build --label "maintainer=José Moreno <jomoespe@gmail.com>" \
+	@ docker build  --label "maintainer=José Moreno <jomoespe@gmail.com>" \
 					--label "version=$(version)" \
 					--label "revision=$(git_commit_short)" \
 					--label "build-date=$(build_date)" \
@@ -29,5 +29,6 @@ build:
 					--rm \
 					--force-rm \
 					--quiet \
-					--tag $(repo)/$(image):$(tag) .
-	@ docker tag $(repo)/$(image):$(tag) $(repo)/$(image):latest
+					--tag $(repo)/$(image):$(docker_tag) \
+					.
+	@ docker tag $(repo)/$(image):$(docker_tag) $(repo)/$(image):latest

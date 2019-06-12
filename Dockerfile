@@ -15,7 +15,7 @@ ARG build_date
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 WORKDIR /go/src/multi-stage-docker
-COPY cmd/* ./cmd/
+COPY . ./
 RUN go test ./...
 RUN go build -ldflags "-s -w -X 'main.version=$version' -X 'main.revision=$revision' -X 'main.buildDate=$build_date'" \
              -a \
@@ -29,4 +29,4 @@ RUN go build -ldflags "-s -w -X 'main.version=$version' -X 'main.revision=$revis
 FROM scratch
 WORKDIR /
 COPY --from=0 /go/src/multi-stage-docker/main .
-CMD ["./main"]
+ENTRYPOINT ["./main"]

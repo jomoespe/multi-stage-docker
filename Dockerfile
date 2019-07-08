@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------
 # First stage: build the binary program
 # ----------------------------------------------------------------------
-FROM golang:1.12.5
+FROM golang:1.12.5 AS builder
 ARG version
 ARG revision
 ARG build_date
@@ -28,5 +28,5 @@ RUN go build -ldflags "-s -w -X 'main.version=$version' -X 'main.revision=$revis
 # ----------------------------------------------------------------------
 FROM scratch
 WORKDIR /
-COPY --from=0 /go/src/multi-stage-docker/main .
+COPY --from=builder /go/src/multi-stage-docker/main .
 ENTRYPOINT ["./main"]

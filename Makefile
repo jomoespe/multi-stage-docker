@@ -28,7 +28,6 @@ build:
 					--build-arg build_date="$(build_date)" \
 					--rm \
 					--force-rm \
-					--quiet \
 					--tag $(repo)/$(image):$(docker_tag) \
 					.
 	@ docker tag $(repo)/$(image):$(docker_tag) $(repo)/$(image):latest

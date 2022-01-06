@@ -8,7 +8,7 @@
 # ----------------------------------------------------------------------
 # First stage: build the binary program
 # ----------------------------------------------------------------------
-FROM golang:1.12.6 AS builder
+FROM golang:1.17.5 AS builder
 ARG version
 ARG revision
 ARG build_date
